@@ -6,7 +6,7 @@ Secret Server Task
 
 git clone \
 cd backend \
-make a copy of env.tmp set the environment variables and save .env
+make a copy of env.tmp set the environment variables and save .env \
 docker-compose up \
 type in the browser: http://127.0.0.1
 
