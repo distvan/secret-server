@@ -30,7 +30,7 @@ export default new Vuex.Store({
   },
   actions: {
     getDataSecret({ commit }, hash){
-      fetch("http://127.0.0.1:3000/api/secret/" + hash)
+      fetch("/api/secret/" + hash)
         .then(async response => {
           const data = await response.json()
           commit("setOrigText", data.secretText)
@@ -49,7 +49,7 @@ export default new Vuex.Store({
           "expireAfter": data.expireAfter
         })
       }
-      fetch("http://127.0.0.1:3000/api/secret", requestOptions)
+      fetch("/api/secret", requestOptions)
         .then(async response => {
           const data = await response.json()
           commit("setHashValue", data.hash)

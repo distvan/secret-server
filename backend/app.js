@@ -1,10 +1,10 @@
+const port = process.env.PORT || 8080;
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
-
 const indexRouter = require('./routes/index');
 const apiRouter = require('./routes/api');
 
@@ -38,6 +38,10 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.listen(port, function(){
+  console.log(`App listening on ${port}!`);
 });
 
 module.exports = app;

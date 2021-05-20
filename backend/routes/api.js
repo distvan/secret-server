@@ -1,11 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const config = require('../config');
 const SecretData = require('../models/secret-data');
 const {check, validationResult} = require('express-validator');
 const jwt = require('jwt-simple');
+const config = require('../config');
 const mongoose = require('mongoose');
-mongoose.connect(config.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true})
+let url = config.MONGODB_URL;
+if(url == ''){
+  url = `mongodb://${config.MONGO_USERNAME}:${config.MONGO_PASSWORD}@${config.MONGO_HOSTNAME}:${config.MONGO_PORT}/${config.MONGO_DB}?authSource=admin`;
+}
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: true,
+  connectTimeoutMS: 10000
+}
+mongoose.connect(url, options).then(function(){
+  console.log('MongoDB is connected');
+})
+.catch(function(err){
+  console.log(err);
+})
 
 /**
  * Get info about secret using hash but return empty if it expires
