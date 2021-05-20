@@ -4,9 +4,9 @@ Secret Server Task
 
 ## How to run the app with Docker Compose
 
-git clone
-cd backend
-docker-compose up
+git clone \
+cd backend \
+docker-compose up \
 type in the browser: http://127.0.0.1
 
 ## How to run the app without Docker Compose
@@ -21,25 +21,25 @@ type in the browser: http://127.0.0.1
 
 ### Backend Configuration
 
-Everything be set in environment variables. You should set them first in your environment.
-create a backend/.env file using env.tmp to set your own.
-Generate a secret key for token encryption: openssl rand256 | base64
-You can set a MONGODB_URL or if you use docker leave it empty and set the others (MONGO_USERNAME, MONGO_PASSWORD, MONGO_PORT, MONGO_DB)
+Everything be set in environment variables. You should set them first in your environment.\
+create a backend/.env file using env.tmp to set your own.\
+Generate a secret key for token encryption: openssl rand256 | base64\
+You can set a MONGODB_URL or if you use docker leave it empty and set the others (MONGO_USERNAME, MONGO_PASSWORD, MONGO_PORT, MONGO_DB)\
 the MONGO_HOST settings come from docker-compose db section and you should leave empty in that case.
 
 ### Backend Installation
 
-Install project dependencies but first please check your node and npm version number. Use the latest one.
-cd backend
+Install project dependencies but first please check your node and npm version number. Use the latest one.\
+cd backend \
 npm install
 
 ## Backend Testing
 
-cd backend
+cd backend \
 npm test
 
 ## Frontend Build
 
-cd frontend/secret-server
-npm install
+cd frontend/secret-server \
+npm install \
 npm run build
