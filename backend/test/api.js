@@ -37,7 +37,7 @@ describe('SecretData', () => {
         it('generate secret hash with empty input data', (done) => {
             chai.request(app)
                 .post('/api/secret')
-                .set('content-type', 'application/x-www-form-urlencoded')
+                .set('content-type', 'application/json')
                 .send({})
                 .end((err, res) => {
                     res.should.have.status(422);
@@ -47,7 +47,7 @@ describe('SecretData', () => {
         it('generate secret hash with invalid input expireAfterViews data', (done) => {
             chai.request(app)
                 .post('/api/secret')
-                .set('content-type', 'application/x-www-form-urlencoded')
+                .set('content-type', 'application/json')
                 .send({
                     'expireAfterViews': 'apple'
                 })
@@ -59,7 +59,7 @@ describe('SecretData', () => {
         it('generate secret hash with invalid input expireAfter data', (done) => {
             chai.request(app)
                 .post('/api/secret')
-                .set('content-type', 'application/x-www-form-urlencoded')
+                .set('content-type', 'application/json')
                 .send({
                     'expireAfter': 'pear'
                 })
@@ -72,7 +72,7 @@ describe('SecretData', () => {
             let secretText = 'hello secret server test!';
             chai.request(app)
                 .post('/api/secret')
-                .set('content-type', 'application/x-www-form-urlencoded')
+                .set('content-type', 'application/json')
                 .send({
                     'secret': secretText,
                     'expireAfterViews': remainingViews,
@@ -115,7 +115,7 @@ describe('SecretData', () => {
             let secretText = 'hello secret server test again!';
             chai.request(app)
                 .post('/api/secret')
-                .set('content-type', 'application/x-www-form-urlencoded')
+                .set('content-type', 'application/json')
                 .send({
                     'secret': secretText,
                     'expireAfterViews': remainingViews,
