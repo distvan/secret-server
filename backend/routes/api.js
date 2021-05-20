@@ -113,7 +113,6 @@ router.post('/secret', [
     let expiration = new Date(Date.now() + expirationValue);
     const hashValue = jwt.encode(payload, config.JWT_SECRET);
     const data = new SecretData({
-      "_id": "",
       "hash_value": hashValue,
       "view_count": expireAfterViews,
       "created_at": now,
